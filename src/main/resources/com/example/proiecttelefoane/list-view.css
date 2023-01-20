@@ -1,0 +1,30 @@
+.list-view{
+	-fx-background-color:
+			linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),
+			linear-gradient(#ffea6a, #efaa22),
+			linear-gradient(#ffef84, #f2ba44),
+			linear-gradient(#ffd65b, #e68400);
+	-fx-background-radius: 30;
+	-fx-padding: 5.7px;
+}
+
+.list-cell:odd{
+	-fx-text-fill: #654b00;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-background-color: transparent;
+	-fx-padding: 5.7px;
+}
+
+.list-cell:even{
+	-fx-text-fill: #654b00;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-background-color: transparent;
+	-fx-padding: 5.7px;
+}
+
+.scroll-bar{
+	-fx-background-color:  rgb(255, 255, 255);
+	-fx-background-radius: 10px;
+}
