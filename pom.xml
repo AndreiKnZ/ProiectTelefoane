@@ -47,6 +47,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-container-default</artifactId>
+            <version>1.0-alpha-30</version>
+        </dependency>
     </dependencies>
 
     <build>
