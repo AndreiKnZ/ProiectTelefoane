@@ -48,6 +48,35 @@ public class HelloController implements Initializable {
     private ListView<TelefonPublic> Id3;
 
     @FXML
+    public void OnAddTelPublic(){
+        Random random = new Random();
+
+        TelefonPublic tel = new TelefonPublic();
+        tel.calitateFoto = random.nextInt(50);
+        tel.pret = random.nextInt(1000, 5000);
+        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt(0, sistemeDeOperare.size()));
+        tel.model = modeleTelefon.get(random.nextInt(0, modeleTelefon.size()));
+        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt(0, culoriTelefoane.size())));
+        tel.setDimensiuneaCabinei(random.nextInt(0, 5));
+        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt(0, dimensiuniTelefon.size())));
+        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt(0, sanatateBaterie.size())));
+
+        addTelPublic(listaTelPublice, tel);
+        Id3.getItems().setAll(listaTelPublice);
+
+        try {
+            FileOutputStream fos1 = new FileOutputStream("telPublice.txt");
+            for (TelefonPublic i : listaTelPublice) {
+                byte[] bytes = i.toString().getBytes();
+                fos1.write(bytes);
+            }
+            fos1.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void OnAddTelMobil(){
         Random random = new Random();
 
@@ -103,34 +132,6 @@ public class HelloController implements Initializable {
         }
     }
 
-    @FXML
-    public void OnAddTelPublic(){
-        Random random = new Random();
-
-        TelefonPublic tel = new TelefonPublic();
-        tel.calitateFoto = random.nextInt(50);
-        tel.pret = random.nextInt(1000, 5000);
-        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt(0, sistemeDeOperare.size()));
-        tel.model = modeleTelefon.get(random.nextInt(0, modeleTelefon.size()));
-        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt(0, culoriTelefoane.size())));
-        tel.setDimensiuneaCabinei(random.nextInt(0, 5));
-        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt(0, dimensiuniTelefon.size())));
-        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt(0, sanatateBaterie.size())));
-
-        addTelPublic(listaTelPublice, tel);
-        Id3.getItems().setAll(listaTelPublice);
-
-        try {
-            FileOutputStream fos1 = new FileOutputStream("telPublice.txt");
-            for (TelefonPublic i : listaTelPublice) {
-                byte[] bytes = i.toString().getBytes();
-                fos1.write(bytes);
-            }
-            fos1.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     public void onShowMobilList(){
