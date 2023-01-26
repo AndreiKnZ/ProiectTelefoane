@@ -1,6 +1,6 @@
 .list-view{
 	-fx-background-color:
-			linear-gradient(#dd345b, #ffffff);
+	linear-gradient(#dd345b, #ffffff);
 	-fx-background-radius: 30;
 	-fx-padding: 5.7px;
 }
