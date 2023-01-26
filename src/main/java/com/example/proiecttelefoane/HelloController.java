@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class HelloController implements Initializable {
 
@@ -35,8 +36,8 @@ public class HelloController implements Initializable {
     List<String> sistemeDeOperare = Arrays.asList("Google Android ", "Apple iOS ", "Windows Phone ");
 
     List<String> modeleTelefon = Arrays.asList("IPhone ", "Samsung ", "Huawei ", "Xiaomi ", "One Plus ", "Lenovo ", "Google ", "Sony ", "ZTE ", "LG ");
-    List<String> culoriTelefoane = Arrays.asList("Negru ", "Alb ", "Galben ", "Portocaliu ", "Roşu ", "Violet ", "Albastru ", "Turcoaz ", "Gri ", "Verde ","Purpuriu ","Cyan ");
-    List<String> dimensiuniTelefon = Arrays.asList("5.2 inch ", "5.4 Inch ", "5.6 Inch ", "5.8 Inch ", "6.0 Inch ", "6.2 Inch, ", "6.4 Inch, ","6.6 Inch ", "6.8 Inch ", "7.0 Inch ");
+    List<String> culoriTelefoane = Arrays.asList("Negru ", "Alb ", "Galben ", "Portocaliu ", "Roşu ", "Violet ", "Albastru ", "Turcoaz ", "Gri ", "Verde ", "Purpuriu ", "Cyan ");
+    List<String> dimensiuniTelefon = Arrays.asList("5.2 inch ", "5.4 Inch ", "5.6 Inch ", "5.8 Inch ", "6.0 Inch ", "6.2 Inch, ", "6.4 Inch, ", "6.6 Inch ", "6.8 Inch ", "7.0 Inch ");
     List<String> sanatateBaterie = Arrays.asList("Foarte bună ", "Bună ", "Normală ", "Deteriorată ", "Foarte Deteriorată");
     List<String> procesoareTelefon = Arrays.asList("A16 Bionic", "Snapdragon 8 Gen 2", "A15 Bionic ", "Dimensity 9000+", "Exynos 2200", "Kirin 9000", "Google Tensor G2", "Kirin 9300E");
 
@@ -48,18 +49,18 @@ public class HelloController implements Initializable {
     private ListView<TelefonPublic> Id3;
 
     @FXML
-    public void OnAddTelPublic(){
+    public void OnAddTelPublic() {
         Random random = new Random();
 
         TelefonPublic tel = new TelefonPublic();
         tel.calitateFoto = random.nextInt(50);
-        tel.pret = random.nextInt(1000, 5000);
-        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt(0, sistemeDeOperare.size()));
+        tel.pret = random.nextInt( 5000);
+        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt( sistemeDeOperare.size()));
         tel.model = modeleTelefon.get(random.nextInt(0, modeleTelefon.size()));
-        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt(0, culoriTelefoane.size())));
-        tel.setDimensiuneaCabinei(random.nextInt(0, 5));
-        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt(0, dimensiuniTelefon.size())));
-        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt(0, sanatateBaterie.size())));
+        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt( culoriTelefoane.size())));
+        tel.setDimensiuneaCabinei(random.nextInt(5));
+        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt( dimensiuniTelefon.size())));
+        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt( sanatateBaterie.size())));
 
         addTelPublic(listaTelPublice, tel);
         Id3.getItems().setAll(listaTelPublice);
@@ -77,18 +78,18 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    public void OnAddTelMobil(){
+    public void OnAddTelMobil() {
         Random random = new Random();
 
         TelefonMobil tel = new TelefonMobil();
         tel.calitateFoto = random.nextInt(50);
-        tel.pret = random.nextInt(1000, 5000);
-        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt(0, sistemeDeOperare.size()));
-        tel.model = modeleTelefon.get(random.nextInt(0, modeleTelefon.size()));
-        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt(0, culoriTelefoane.size())));
-        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt(0, dimensiuniTelefon.size())));
-        tel.setProcesorTelefon(procesoareTelefon.get(random.nextInt(0, procesoareTelefon.size())));
-        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt(0, sanatateBaterie.size())));
+        tel.pret = random.nextInt( 5000);
+        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt( sistemeDeOperare.size()));
+        tel.model = modeleTelefon.get(random.nextInt( modeleTelefon.size()));
+        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt( culoriTelefoane.size())));
+        tel.setDimensiuniTelefon(dimensiuniTelefon.get(random.nextInt( dimensiuniTelefon.size())));
+        tel.setProcesorTelefon(procesoareTelefon.get(random.nextInt( procesoareTelefon.size())));
+        tel.setSanatateBaterie(sanatateBaterie.get(random.nextInt( sanatateBaterie.size())));
 
         addTelMobil(listaTelMobile, tel);
         Id1.getItems().setAll(listaTelMobile);
@@ -106,16 +107,16 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    public void OnAddTelFix(){
+    public void OnAddTelFix() {
         Random random = new Random();
 
         TelefonFix tel = new TelefonFix();
         tel.calitateFoto = random.nextInt(50);
-        tel.pret = random.nextInt(1000, 5000);
-        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt(0, sistemeDeOperare.size()));
-        tel.model = modeleTelefon.get(random.nextInt(0, modeleTelefon.size()));
-        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt(0, culoriTelefoane.size())));
-        tel.setRazaDeActiune(random.nextInt(0, 20));
+        tel.pret = random.nextInt( 5000);
+        tel.sistemDeOperare = sistemeDeOperare.get(random.nextInt( sistemeDeOperare.size()));
+        tel.model = modeleTelefon.get(random.nextInt( modeleTelefon.size()));
+        tel.setCuloareTelefon(culoriTelefoane.get(random.nextInt( culoriTelefoane.size())));
+        tel.setRazaDeActiune(random.nextInt(20));
 
         addTelFix(listaTelFixe, tel);
         Id2.getItems().setAll(listaTelFixe);
@@ -134,25 +135,30 @@ public class HelloController implements Initializable {
 
 
     @FXML
-    public void onShowMobilList(){
+    public void onShowMobilList() {
         Id1.setVisible(true);
     }
+
     @FXML
-    public void onShowFixList(){
+    public void onShowFixList() {
         Id2.setVisible(true);
     }
+
     @FXML
-    public void onShowPublicList(){
+    public void onShowPublicList() {
         Id3.setVisible(true);
     }
-    public void addTelMobil(List<TelefonMobil> listaTelMobil, TelefonMobil tel){
+
+    public void addTelMobil(List<TelefonMobil> listaTelMobil, TelefonMobil tel) {
         listaTelMobil.add(tel);
 
     }
-    public void addTelFix(List<TelefonFix> listaTelFixe, TelefonFix tel){
+
+    public void addTelFix(List<TelefonFix> listaTelFixe, TelefonFix tel) {
         listaTelFixe.add(tel);
 
     }
+
     public void addTelPublic(List<TelefonPublic> listaTelPublice, TelefonPublic tel) {
         listaTelPublice.add(tel);
     }
@@ -175,4 +181,5 @@ public class HelloController implements Initializable {
     public List<TelefonPublic> getListaTelPublice() {
         return listaTelPublice;
     }
+
 }

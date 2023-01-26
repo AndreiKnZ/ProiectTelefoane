@@ -19,15 +19,17 @@ public class HelloApplication extends Application {
 
         stage.setTitle("Telefoane");
 
-        stage.setTitle("Telefoane Fixe");
-
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-        System.out.println("Test Initializare!");
+        List<Telefon> mobiles = new ArrayList<>();
+
+        mobiles.stream()
+                .filter(m -> m.pret > 3000)
+                .map(m -> m.name)
+                .forEach(System.out::println);
         launch();
     }
 }
-
