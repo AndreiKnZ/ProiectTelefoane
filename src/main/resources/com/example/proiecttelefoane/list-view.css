@@ -1,0 +1,27 @@
+.list-view{
+	-fx-background-color:
+			linear-gradient(#dd4122, #cce384);
+	-fx-background-radius: 30;
+	-fx-padding: 5.7px;
+}
+
+.list-cell:odd{
+	-fx-text-fill: #654b00;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-background-color: transparent;
+	-fx-padding: 5.7px;
+}
+
+.list-cell:even{
+	-fx-text-fill: #654b00;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-background-color: transparent;
+	-fx-padding: 5.7px;
+}
+
+.scroll-bar{
+	-fx-background-color:  rgb(255, 255, 255);
+	-fx-background-radius: 10px;
+}
