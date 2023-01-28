@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
+        Scene scene = new Scene(fxmlLoader.load(), 1250, 900);
 
         stage.setTitle("Telefoane");
 
@@ -23,13 +23,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        List<Telefon> mobiles = new ArrayList<>();
-
-        mobiles.stream()
-                .filter(m -> m.pret > 3000)
-                .map(m -> m.name)
-                .forEach(System.out::println);
+    public static void main(String[] args){
         launch();
     }
 }

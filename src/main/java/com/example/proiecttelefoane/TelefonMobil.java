@@ -70,6 +70,10 @@ public class TelefonMobil extends Telefon {
     public void setProcesorTelefon(String procesorTelefon) {
         this.procesorTelefon = procesorTelefon;
     }
+
+    public String getModel(){
+        return this.model;
+    }
     @Override
     public String toString(){
         String mesaj;

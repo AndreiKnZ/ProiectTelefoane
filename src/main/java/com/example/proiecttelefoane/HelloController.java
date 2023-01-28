@@ -1,12 +1,16 @@
 package com.example.proiecttelefoane;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -26,6 +30,12 @@ public class HelloController implements Initializable {
     private Button ShowFix;
     @FXML
     private Button ShowPublic;
+    @FXML
+    private TextField searchTelPublic;
+    @FXML
+    private TextField searchTelFix;
+    @FXML
+    private TextField searchTelMobil;
 
     List<TelefonMobil> listaTelMobile = new ArrayList<TelefonMobil>();
 
@@ -48,6 +58,67 @@ public class HelloController implements Initializable {
     @FXML
     private ListView<TelefonPublic> Id3;
 
+    @FXML
+    private Button buttonSearchMobil;
+    @FXML
+    private Button buttonSearchFix;
+    @FXML
+    private Button buttonSearchPublic;
+    @FXML
+    private Button buttonImport;
+    @FXML
+    private ListView<String> listaImport;
+
+   @FXML
+    public void searchByMarcaMobil(){
+        List<TelefonMobil> lst_aux = new ArrayList<TelefonMobil>();
+
+        for(TelefonMobil i: listaTelMobile){
+            String searchText = searchTelMobil.getText().trim().toLowerCase();
+            String modelText = i.getModel().trim().toLowerCase();
+            //System.out.println(searchText + " - " + modelText);
+           if(searchText.equals(modelText)){
+                //System.out.println("ceva");
+                lst_aux.add(i);
+           }
+        }
+
+        Id1.getItems().setAll(lst_aux);
+    }
+
+    @FXML
+    public void searchByMarcaFix(){
+        List<TelefonFix> lst_aux = new ArrayList<TelefonFix>();
+
+        for(TelefonFix i: listaTelFixe){
+            String searchText = searchTelFix.getText().trim().toLowerCase();
+            String modelText = i.getModel().trim().toLowerCase();
+            //System.out.println(searchText + " - " + modelText);
+            if(searchText.equals(modelText)){
+                //System.out.println("ceva");
+                lst_aux.add(i);
+            }
+        }
+
+        Id2.getItems().setAll(lst_aux);
+    }
+
+    @FXML
+    public void searchByMarcaPublic(){
+        List<TelefonPublic> lst_aux = new ArrayList<TelefonPublic>();
+
+        for(TelefonPublic i: listaTelPublice){
+            String searchText = searchTelPublic.getText().trim().toLowerCase();
+            String modelText = i.getModel().trim().toLowerCase();
+            //System.out.println(searchText + " - " + modelText);
+            if(searchText.equals(modelText)){
+                //System.out.println("ceva");
+                lst_aux.add(i);
+            }
+        }
+
+        Id3.getItems().setAll(lst_aux);
+    }
     @FXML
     public void OnAddTelPublic() {
         Random random = new Random();
@@ -137,16 +208,19 @@ public class HelloController implements Initializable {
     @FXML
     public void onShowMobilList() {
         Id1.setVisible(true);
+        Id1.getItems().setAll(listaTelMobile);
     }
 
     @FXML
     public void onShowFixList() {
         Id2.setVisible(true);
+        Id2.getItems().setAll(listaTelFixe);
     }
 
     @FXML
     public void onShowPublicList() {
         Id3.setVisible(true);
+        Id3.getItems().setAll(listaTelPublice);
     }
 
     public void addTelMobil(List<TelefonMobil> listaTelMobil, TelefonMobil tel) {
@@ -168,6 +242,7 @@ public class HelloController implements Initializable {
         Id3.setVisible(false);
         Id2.setVisible(false);
         Id1.setVisible(false);
+        listaImport.setVisible(false);
     }
 
     public List<TelefonMobil> getListaTelMobile() {
@@ -182,4 +257,27 @@ public class HelloController implements Initializable {
         return listaTelPublice;
     }
 
+    @FXML
+    public void importFisierTxt(){
+        try {
+            List<String> Importlista = new ArrayList<String>();
+            // Create a FileReader object
+            FileReader fileReader = new FileReader("fisierulMeu.txt");
+            // Wrap the FileReader in a BufferedReader
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            // Read the file line by line
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                // Process the line
+               // System.out.println(line);
+                Importlista.add(line);
+            }
+            // Close the BufferedReader
+            listaImport.getItems().setAll(Importlista);
+            listaImport.setVisible(true);
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

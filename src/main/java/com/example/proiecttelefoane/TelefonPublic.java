@@ -34,6 +34,9 @@ public class TelefonPublic extends Telefon{
         System.out.println("Pretul abonament pentru telefon public");
 
     }
+    public String getModel(){
+        return this.model;
+    }
 
     public String getSanatateBaterie() {
         return sanatateBaterie;

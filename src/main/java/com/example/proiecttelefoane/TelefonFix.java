@@ -49,6 +49,10 @@ public class TelefonFix extends Telefon{
     public void setCuloareTelefon(String culoareTelefon) {
         this.culoareTelefon = culoareTelefon;
     }
+
+    public String getModel(){
+        return this.model;
+    }
     @Override
     public String toString(){
         String mesaj;
